@@ -46,8 +46,6 @@ import java.util.Queue;
 public class TopKElementInList {
 
     /**
-     * Calculates the time and space complexity of the algorithm.
-     *
      * <p>
      * <b>Time Complexity:</b> O(n)
      * </p>
