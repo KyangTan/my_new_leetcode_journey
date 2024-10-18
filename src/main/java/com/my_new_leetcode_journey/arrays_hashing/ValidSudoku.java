@@ -71,7 +71,7 @@ import java.util.Set;
 
 public class ValidSudoku {
 
-    public boolean isValidSudoku(char[][] board) {
+    public static boolean isValidSudoku(char[][] board) {
         HashMap<Integer, Set<Character>> row = new HashMap<>();
         HashMap<Integer, Set<Character>> column = new HashMap<>();
         HashMap<Integer, Set<Character>> square = new HashMap<>();
@@ -100,7 +100,7 @@ public class ValidSudoku {
 
     }
 
-    private boolean columnChecker(int i, int j, HashMap<Integer, Set<Character>> column, char[][] board) {
+    private static boolean columnChecker(int i, int j, HashMap<Integer, Set<Character>> column, char[][] board) {
         char value = board[i][j];
         if (value == '.') return true;  // Skip checking for empty cells
         
@@ -114,7 +114,7 @@ public class ValidSudoku {
         return true;
     }
     
-    private boolean rowChecker(int i, int j, HashMap<Integer, Set<Character>> row, char[][] board) {
+    private static boolean rowChecker(int i, int j, HashMap<Integer, Set<Character>> row, char[][] board) {
         char value = board[i][j];
         if (value == '.') return true;  // Skip checking for empty cells
         
@@ -128,7 +128,7 @@ public class ValidSudoku {
         return true;
     }
     
-    private boolean squareChecker(int i, int j, HashMap<Integer, Set<Character>> square, char[][] board) {
+    private static boolean squareChecker(int i, int j, HashMap<Integer, Set<Character>> square, char[][] board) {
         char value = board[i][j];
         if (value == '.') return true;  // Skip checking for empty cells
         
