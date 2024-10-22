@@ -57,16 +57,38 @@ import java.util.Set;
  */
 public class ThreeIntegerSum {
 
-    public List<List<Integer>> threeSumOptimal(int[] nums) {
+    /**
+     * <h3>Time & Space Complexity:</h3>
+     * 
+     * <p>
+     * <b>Time Complexity:</b> O(n<sup>2</sup>)
+     * </p>
+     * <ul>
+     * <li>Where <code>n</code> is the length of the input.</li>
+     * </ul>
+     * 
+     * <p>
+     * <b>Space Complexity:</b> O(1) or O(n) depending on the sorting algorithm.
+     * </p>
+     * <ul>
+     * <li>O(1) for in-place sorting algorithms.</li>
+     * <li>O(n) for sorting algorithms that require additional space.</li>
+     * </ul>
+     */
+    public List<List<Integer>> threeSumTwoPointersOptimal(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> answer = new ArrayList<>();
 
         for (int i = 0; i < nums.length; i++) {
-            // if the smallest element is larger than 0, means there will be no sum of 3 elements is possible to achieve only 0
-            if (nums[i] > 0) break;
+            // if the smallest element is larger than 0, means there will be no sum of 3
+            // elements is possible to achieve only 0
+            if (nums[i] > 0)
+                break;
 
-            // if it is second element or later, then checks if it is the same with the previous element, if yes, then skip
-            if (i > 0 && nums[i] == nums[i - 1]) continue; 
+            // if it is second element or later, then checks if it is the same with the
+            // previous element, if yes, then skip
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
 
             int l = i + 1, r = nums.length - 1;
             while (l < r) {
