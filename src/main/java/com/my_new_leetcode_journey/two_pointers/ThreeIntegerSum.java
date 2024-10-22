@@ -57,6 +57,37 @@ import java.util.Set;
  */
 public class ThreeIntegerSum {
 
+    public List<List<Integer>> threeSumOptimal(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> answer = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            // if the smallest element is larger than 0, means there will be no sum of 3 elements is possible to achieve only 0
+            if (nums[i] > 0) break;
+
+            // if it is second element or later, then checks if it is the same with the previous element, if yes, then skip
+            if (i > 0 && nums[i] == nums[i - 1]) continue; 
+
+            int l = i + 1, r = nums.length - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum > 0) {
+                    r--;
+                } else if (sum < 0) {
+                    l++;
+                } else {
+                    answer.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    l++;
+                    r--;
+                    while (l < r && nums[l] == nums[l - 1]) {
+                        l++;
+                    }
+                }
+            }
+        }
+        return answer;
+    }
+
     /**
      * <h3>Time & Space Complexity:</h3>
      * 
@@ -80,13 +111,6 @@ public class ThreeIntegerSum {
         Set<String> alreadyAnswered = new HashSet<>();
 
         Arrays.sort(nums);
-
-        System.out.print("sorted: [");
-        for (Integer num : nums) {
-            System.out.print(num + ", ");
-        }
-        System.out.print("]");
-        System.out.println();
 
         for (int i = 0; i < nums.length; i++) {
             int target = 0 - nums[i];
@@ -113,12 +137,6 @@ public class ThreeIntegerSum {
 
                     subAnswer.sort((a, b) -> a - b);
 
-                    System.out.print("[");
-                    for (int number : subAnswer) {
-                        System.out.print(number + ",");
-                    }
-                    System.out.print("]");
-
                     StringBuilder sb = new StringBuilder();
 
                     for (Integer integer : subAnswer) {
@@ -141,18 +159,6 @@ public class ThreeIntegerSum {
                     }
                 }
             }
-        }
-
-        System.out.println();
-        System.out.println("answer");
-
-        for (List<Integer> list : answer) {
-            System.out.print("[");
-
-            for (Integer number : list) {
-                System.out.print(number + ",");
-            }
-            System.out.print("]");
         }
 
         return answer;
