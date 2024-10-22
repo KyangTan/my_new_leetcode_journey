@@ -39,6 +39,40 @@ public class TwoIntegerSumII {
     /**
      * <h3>Time & Space Complexity:</h3>
      * 
+     * <p>
+     * <b>Time Complexity:</b> O(n)
+     * </p>
+     * <ul>
+     * <li>Where <code>n</code> is the length of the input.</li>
+     * </ul>
+     * 
+     * <p>
+     * <b>Space Complexity:</b> O(1)
+     * </p>
+     * <ul>
+     * <li>Constant space usage, regardless of input size.</li>
+     * </ul>
+     */
+    public static int[] twoSumTwoPointersOptimal(int[] numbers, int target) {
+        int l = 0, r = numbers.length - 1;
+
+        while (l < r) {
+            int curSum = numbers[l] + numbers[r];
+
+            if (curSum > target) {
+                r--;
+            } else if (curSum < target) {
+                l++;
+            } else {
+                return new int[] { l + 1, r + 1 };
+            }
+        }
+        return new int[0];
+    }
+
+    /**
+     * <h3>Time & Space Complexity:</h3>
+     * 
      * <p><b>Time Complexity:</b> O(n)</p>
      * <ul>
      *     <li>Where <code>n</code> is the length of the input.</li>
