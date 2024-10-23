@@ -4,7 +4,7 @@ import com.my_new_leetcode_journey.two_pointers.MaxWaterContainer;
 
 public class Main {
     public static void main(String[] args) {
-        int[] nums = {1,7,2,5,4,7,3,6};
+        int[] nums = {2,2,2};
 
         int answer = MaxWaterContainer.maxAreaSelfAttempt(nums);
 

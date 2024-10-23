@@ -52,6 +52,40 @@ public class MaxWaterContainer {
      * <li>Constant space usage, independent of input size.</li>
      * </ul>
      */
+    public int maxAreaOptimal(int[] heights) {
+        int l = 0;
+        int r = heights.length - 1;
+        int res = 0;
+        
+        while (l < r) {
+            int area = Math.min(heights[l], heights[r]) * (r - l);
+            res = Math.max(res, area);
+            if (heights[l] <= heights[r]) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * <h3>Time & Space Complexity:</h3>
+     * 
+     * <p>
+     * <b>Time Complexity:</b> O(n)
+     * </p>
+     * <ul>
+     * <li>Where <code>n</code> is the length of the input.</li>
+     * </ul>
+     * 
+     * <p>
+     * <b>Space Complexity:</b> O(1)
+     * </p>
+     * <ul>
+     * <li>Constant space usage, independent of input size.</li>
+     * </ul>
+     */
     public static int maxAreaSelfAttempt(int[] heights) {
         int left = 0;
         int right = heights.length - 1;
