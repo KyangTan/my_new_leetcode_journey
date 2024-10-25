@@ -1,14 +1,15 @@
 package com.my_new_leetcode_journey;
 
+import com.my_new_leetcode_journey.stack.ValidateParentheses;
 import com.my_new_leetcode_journey.two_pointers.MaxWaterContainer;
 
 public class Main {
     public static void main(String[] args) {
-        int[] nums = {2,2,2};
+        // int[] nums = {2,2,2};
 
-        int answer = MaxWaterContainer.maxAreaSelfAttempt(nums);
+        // int answer = MaxWaterContainer.maxAreaSelfAttempt(nums);
 
-        System.out.println(answer);
+        // System.out.println(answer);
 
         // List<List<Integer>> answer = ThreeIntegerSum.threeSumSelfAttempt(nums);
 
@@ -17,5 +18,12 @@ public class Main {
         //     System.out.print(i);
         // }
         // System.out.print("answer: ]");
+
+        String s = "[(])";
+
+        boolean answer = ValidateParentheses.isValid(s);
+
+        System.out.println(answer);
+
     }
 }
