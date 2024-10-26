@@ -1,12 +1,15 @@
 package com.my_new_leetcode_journey;
 
+import java.util.List;
+
 import com.my_new_leetcode_journey.stack.EvaluateReversePolishNotation;
+import com.my_new_leetcode_journey.stack.GenerateParentheses;
 import com.my_new_leetcode_journey.stack.ValidateParentheses;
 import com.my_new_leetcode_journey.two_pointers.MaxWaterContainer;
 
 public class Main {
     public static void main(String[] args) {
-        String[] nums = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
+        // String[] nums = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
 
         // int answer = MaxWaterContainer.maxAreaSelfAttempt(nums);
 
@@ -20,9 +23,18 @@ public class Main {
         // }
         // System.out.print("answer: ]");
 
-        EvaluateReversePolishNotation erpn = new EvaluateReversePolishNotation();
+        // EvaluateReversePolishNotation erpn = new EvaluateReversePolishNotation();
 
-        erpn.evalRPN(nums);
+        // erpn.evalRPN(nums);
+
+        int n = 3;
+
+        List<String> answer = GenerateParentheses.generateParenthesisRecursive(n);
+
+        System.out.println();
+
+        System.out.println("Answer : " + answer);
+
 
     }
 }
