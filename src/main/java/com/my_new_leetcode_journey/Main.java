@@ -2,6 +2,7 @@ package com.my_new_leetcode_journey;
 
 import java.util.List;
 
+import com.my_new_leetcode_journey.stack.DailyTemperatures;
 import com.my_new_leetcode_journey.stack.EvaluateReversePolishNotation;
 import com.my_new_leetcode_journey.stack.GenerateParentheses;
 import com.my_new_leetcode_journey.stack.ValidateParentheses;
@@ -27,14 +28,25 @@ public class Main {
 
         // erpn.evalRPN(nums);
 
-        int n = 3;
+        // int n = 3;
 
-        List<String> answer = GenerateParentheses.generateParenthesisRecursive(n);
+        // List<String> answer = GenerateParentheses.generateParenthesisRecursive(n);
 
-        System.out.println();
+        // System.out.println();
 
-        System.out.println("Answer : " + answer);
+        // System.out.println("Answer : " + answer);
 
+
+        int[] temperatures = {30,38,30,36,35,40,28};
+
+        DailyTemperatures dt = new DailyTemperatures();
+
+        int[] answer = dt.dailyTemperatures(temperatures);
+
+        System.out.println("\nAnswer");
+        for (int i : answer) {
+            System.out.println(i);
+        }
 
     }
 }
