@@ -5,48 +5,12 @@ import java.util.List;
 import com.my_new_leetcode_journey.stack.DailyTemperatures;
 import com.my_new_leetcode_journey.stack.EvaluateReversePolishNotation;
 import com.my_new_leetcode_journey.stack.GenerateParentheses;
+import com.my_new_leetcode_journey.stack.LargestRectangleInHistogram;
 import com.my_new_leetcode_journey.stack.ValidateParentheses;
 import com.my_new_leetcode_journey.two_pointers.MaxWaterContainer;
 
 public class Main {
     public static void main(String[] args) {
-        // String[] nums = {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
-
-        // int answer = MaxWaterContainer.maxAreaSelfAttempt(nums);
-
-        // System.out.println(answer);
-
-        // List<List<Integer>> answer = ThreeIntegerSum.threeSumSelfAttempt(nums);
-
-        // System.out.print("answer: [");
-        // for (int i : answer) {
-        //     System.out.print(i);
-        // }
-        // System.out.print("answer: ]");
-
-        // EvaluateReversePolishNotation erpn = new EvaluateReversePolishNotation();
-
-        // erpn.evalRPN(nums);
-
-        // int n = 3;
-
-        // List<String> answer = GenerateParentheses.generateParenthesisRecursive(n);
-
-        // System.out.println();
-
-        // System.out.println("Answer : " + answer);
-
-
-        int[] temperatures = {30,38,30,36,35,40,28};
-
-        DailyTemperatures dt = new DailyTemperatures();
-
-        int[] answer = dt.dailyTemperatures(temperatures);
-
-        System.out.println("\nAnswer");
-        for (int i : answer) {
-            System.out.println(i);
-        }
 
     }
 }
