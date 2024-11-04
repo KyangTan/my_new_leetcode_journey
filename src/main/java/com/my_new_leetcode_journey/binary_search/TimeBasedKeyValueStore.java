@@ -2,6 +2,7 @@ package com.my_new_leetcode_journey.binary_search;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -66,58 +67,109 @@ import java.util.Map;
  *         most recent previous timestamp
  */
 public class TimeBasedKeyValueStore {
-    Map<String, ArrayList<String>> valueMap;
+    Map<String, List<Pair<Integer, String>>> valueMap;
 
     public TimeBasedKeyValueStore() {
         valueMap = new HashMap<>();
     }
 
     public void set(String key, String value, int timestamp) {
-        if (valueMap.containsKey(key)) {
-            ArrayList<String> valueArray = valueMap.get(key);
-            int size = valueArray.size();
-            if (timestamp > size) {
-                while (size != timestamp - 1) {
-                    valueArray.add("");
-                    size = valueArray.size();
-                }
-                valueArray.add(value);
-            }
-        } else {
-            ArrayList<String> valueArray = new ArrayList<>();
-            int size = valueArray.size();
-            if (timestamp > size) {
-                while (size != timestamp - 1) {
-                    valueArray.add("");
-                    size = valueArray.size();
-                }
-                valueArray.add(value);
-            }
-            valueMap.put(key, valueArray);
-        }
+        valueMap.computeIfAbsent(key, k -> new ArrayList<>()).add(new Pair<>(timestamp, value));
     }
 
     public String get(String key, int timestamp) {
-        ArrayList<String> valueArray = valueMap.getOrDefault(key, new ArrayList<>());
+        List<Pair<Integer, String>> values = valueMap.getOrDefault(key, new ArrayList<>());
+        int l = 0;
+        int r = values.size() - 1;
 
-        if (valueArray.equals(null) || valueArray.isEmpty()) {
-            return "";
+        String result = "";
+
+        while (l <= r) {
+            int m = l + (r-l) / 2;
+
+            if (values.get(m).getKey() <= timestamp) {
+                result = values.get(m).getValue();
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
         }
 
-        String answer = "";
+        return result;
+    }
 
-        if (timestamp >= valueArray.size()) {
-            answer = valueArray.get(valueArray.size() - 1);
-        } else if (timestamp == 0) {
-            return "";
-        } else {
-            int i = timestamp;
-            System.out.println(i);
-            do {
-                i--;
-                answer = valueArray.get(i);
-            } while (answer.equals("") && i > 0);
+    // public void set(String key, String value, int timestamp) {
+    // if (valueMap.containsKey(key)) {
+    // ArrayList<String> valueArray = valueMap.get(key);
+    // int size = valueArray.size();
+    // if (timestamp > size) {
+    // while (size != timestamp - 1) {
+    // valueArray.add("");
+    // size = valueArray.size();
+    // }
+    // valueArray.add(value);
+    // }
+    // } else {
+    // ArrayList<String> valueArray = new ArrayList<>();
+    // int size = valueArray.size();
+    // if (timestamp > size) {
+    // while (size != timestamp - 1) {
+    // valueArray.add("");
+    // size = valueArray.size();
+    // }
+    // valueArray.add(value);
+    // }
+    // valueMap.put(key, valueArray);
+    // }
+    // }
+
+    // public String get(String key, int timestamp) {
+    // ArrayList<String> valueArray = valueMap.getOrDefault(key, new ArrayList<>());
+
+    // if (valueArray.equals(null) || valueArray.isEmpty()) {
+    // return "";
+    // }
+
+    // String answer = "";
+
+    // if (timestamp >= valueArray.size()) {
+    // answer = valueArray.get(valueArray.size() - 1);
+    // } else if (timestamp == 0) {
+    // return "";
+    // } else {
+    // int i = timestamp;
+    // System.out.println(i);
+    // do {
+    // i--;
+    // answer = valueArray.get(i);
+    // } while (answer.equals("") && i > 0);
+    // }
+    // return answer;
+    // }
+
+    private static class Pair<K, V> {
+        private K key;
+        private V value;
+
+        Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
         }
-        return answer;
+
+        public void setKey(K key) {
+            this.key = key;
+        }
+
+        public void setValue(V value) {
+            this.value = value;
+        }
+
+        public K getKey() {
+            return key;
+        }
+
+        public V getValue() {
+            return value;
+        }
     }
 }
