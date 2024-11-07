@@ -4,14 +4,19 @@ package com.my_new_leetcode_journey.sliding_window;
  * <h1>Buy and Sell Crypto</h1>
  * <h2>Easy</h2>
  * <p>
- * You are given an integer array <code>prices</code> where <code>prices[i]</code> represents the price of NeetCoin on the <code>i<sup>th</sup></code> day.
- * The goal is to maximize profit by choosing a single day to buy one NeetCoin and a different day in the future to sell it.
+ * You are given an integer array <code>prices</code> where
+ * <code>prices[i]</code> represents the price of NeetCoin on the
+ * <code>i<sup>th</sup></code> day.
+ * The goal is to maximize profit by choosing a single day to buy one NeetCoin
+ * and a different day in the future to sell it.
  * </p>
  * <p>
- * Return the maximum profit you can achieve. If no profitable transaction can be made, return <code>0</code>.
+ * Return the maximum profit you can achieve. If no profitable transaction can
+ * be made, return <code>0</code>.
  * </p>
  * 
  * <h3>Example 1:</h3>
+ * 
  * <pre>
  * Input: prices = [10,1,5,6,7,1]
  * Output: 6
@@ -19,6 +24,7 @@ package com.my_new_leetcode_journey.sliding_window;
  * </pre>
  * 
  * <h3>Example 2:</h3>
+ * 
  * <pre>
  * Input: prices = [10,8,7,5,2]
  * Output: 0
@@ -27,16 +33,28 @@ package com.my_new_leetcode_journey.sliding_window;
  * 
  * <h3>Constraints:</h3>
  * <ul>
- *   <li><code>1 <= prices.length <= 100</code></li>
- *   <li><code>0 <= prices[i] <= 100</code></li>
+ * <li><code>1 <= prices.length <= 100</code></li>
+ * <li><code>0 <= prices[i] <= 100</code></li>
  * </ul>
  * 
  * @param prices an integer array representing the price of NeetCoin on each day
- * @return the maximum profit possible from a single buy and sell transaction, or 0 if no profitable transaction exists
+ * @return the maximum profit possible from a single buy and sell transaction,
+ *         or 0 if no profitable transaction exists
  */
 public class BestTimeToBuyAndSellStock {
-    public int maxProfitMyAttempt(int[] prices) {
 
+    public int maxProfitDP(int[] prices) {
+        int maxP = 0;
+        int minBuy = prices[0];
+
+        for (int sell : prices) {
+            maxP = Math.max(maxP, sell - minBuy);
+            minBuy = Math.min(minBuy, sell);
+        }
+        return maxP;
+    }
+
+    public int maxProfitMyAttempt(int[] prices) {
         if (prices.length <= 1) {
             return 0;
         }
